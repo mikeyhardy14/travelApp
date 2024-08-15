@@ -1,9 +1,8 @@
-// app/components/Header.tsx
 "use client";
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { FaUserCircle, FaHome, FaWpexplorer, FaInfoCircle, FaServicestack, FaPhone, FaFacebookMessenger } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
@@ -11,11 +10,17 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
+  const pathname = usePathname(); // Get the current path
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
   }, []);
+
+  useEffect(() => {
+    // Close the menu whenever the route changes
+    setIsOpen(false);
+  }, [pathname]); // Runs when the path changes
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
