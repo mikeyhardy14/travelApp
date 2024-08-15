@@ -42,22 +42,22 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-4">
           {isLoggedIn ? (
             <>
-              <Link href="/account/profile" className="text-xl text-gray-600">
+              <Link href="/account/profile" className="text-md text-gray-600">
                 Profile
               </Link>
-              <Link href="/chat" className="text-xl text-gray-600">
+              <Link href="/chat" className="text-md text-gray-600">
                 Messenger
               </Link>
-              <button onClick={handleSignOut} className="text-xl text-gray-600">
+              <button onClick={handleSignOut} className="text-md text-gray-600">
                 Sign Out
               </button>
             </>
           ) : (
             <>
-              <Link href="/account/login" className="text-xl text-gray-600">
+              <Link href="/account/login" className="text-md text-gray-600">
                 Login
               </Link>
-              <Link href="/account/signup" className="text-xl text-gray-600">
+              <Link href="/account/signup" className="text-md text-gray-600">
                 Signup
               </Link>
             </>
@@ -67,7 +67,7 @@ const Header: React.FC = () => {
 
       <nav
         className={`fixed top-0 left-0 h-full bg-white shadow-lg transition-transform transform ${
-          isOpen ? 'translate-x-0' : '-translate-x-52'
+          isOpen ? 'translate-x-0' : '-translate-x-40'
         } z-40 flex flex-col items-center w-52`} // Update the width to 52
       >
         <div className="p-4 flex justify-between items-center w-full">
@@ -78,28 +78,28 @@ const Header: React.FC = () => {
             &times;
           </button>
         </div>
-        <div className="flex-1 flex flex-col mt-8 w-full">
-          <Link href="/" className="flex items-center justify-between p-4 text-xl w-full">
+        <div className="flex-1 flex flex-col mt-4 w-full">
+          <Link href="/" className="flex items-center justify-between p-2 text-md w-full">
             <span className={`${isOpen ? 'inline' : 'hidden'} md:inline`}>Home</span>
             <FaHome className="text-gray-600 ml-2" />
           </Link>
-          <Link href="/about" className="flex items-center justify-between p-4 text-xl w-full">
+          <Link href="/about" className="flex items-center justify-between p-2 text-md w-full">
             <span className={`${isOpen ? 'inline' : 'hidden'} md:inline`}>About</span>
             <FaInfoCircle className="text-gray-600 ml-2" />
           </Link>
-          <Link href="/services" className="flex items-center justify-between p-4 text-xl w-full">
+          <Link href="/services" className="flex items-center justify-between p-2 text-md w-full">
             <span className={`${isOpen ? 'inline' : 'hidden'} md:inline`}>Services</span>
             <FaServicestack className="text-gray-600 ml-2" />
           </Link>
-          <Link href="/contact" className="flex items-center justify-between p-4 text-xl w-full">
+          <Link href="/contact" className="flex items-center justify-between p-2 text-md w-full">
             <span className={`${isOpen ? 'inline' : 'hidden'} md:inline`}>Contact</span>
             <FaPhone className="text-gray-600 ml-2" />
           </Link>
-          <Link href="/chat" className="flex items-center justify-between p-4 text-xl w-full">
+          <Link href="/chat" className="flex items-center justify-between p-2 text-md w-full">
             <span className={`${isOpen ? 'inline' : 'hidden'} md:inline`}>Chat</span>
             <FaFacebookMessenger className="text-gray-600 ml-2" />
           </Link>
-          <Link href="/explore" className="flex items-center justify-between p-4 text-xl w-full">
+          <Link href="/explore" className="flex items-center justify-between p-2 text-md w-full">
             <span className={`${isOpen ? 'inline' : 'hidden'} md:inline`}>Explore</span>
             <FaWpexplorer className="text-gray-600 ml-2" />
           </Link>
