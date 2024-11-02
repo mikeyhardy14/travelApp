@@ -3,7 +3,6 @@ import React from 'react';
 import Header from './components/Header';
 import UserSection from './components/UserSection';
 import ExploreSection from './components/ExploreSection';
-import Footer from './components/Footer';
 
 const HomePage: React.FC = () => {
   return (

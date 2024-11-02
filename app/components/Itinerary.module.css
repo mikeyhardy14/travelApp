@@ -1,0 +1,82 @@
+.itineraryContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detailsSection {
+    width: 250px;
+    margin-right: 20px;
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+  .details {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  .actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .likeButton,
+  .copyButton,
+  .showCommentsButton {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #0070f3;
+  }
+  
+  .mediaContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+  }
+  
+  .media {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+  }
+  
+  .commentSection {
+    width: 300px;
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+  }
+  
+  .expanded .mediaContainer {
+    flex: 2;
+  }
+  
