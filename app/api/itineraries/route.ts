@@ -153,15 +153,14 @@ const itineraries = [
   ];
   
   
-// GET request handler to fetch all itineraries
-export async function GET() {
-  return NextResponse.json({ itineraries });
-}
-
-// POST request handler to add a new itinerary
-export async function POST(request: Request) {
-  const newItinerary = await request.json();
-  newItinerary.id = String(itineraries.length + 1); // Add a new ID
-  itineraries.push(newItinerary);
-  return NextResponse.json({ message: 'Itinerary added', itinerary: newItinerary });
-}
+  export async function GET() {
+    return NextResponse.json({ itineraries });
+  }
+  
+  export async function POST(request: Request) {
+    const newItinerary = await request.json();
+    newItinerary.id = String(itineraries.length + 1); // Generate a unique ID for the new itinerary
+    itineraries.push(newItinerary);
+    return NextResponse.json({ message: 'Itinerary created successfully', itinerary: newItinerary });
+  }
+  

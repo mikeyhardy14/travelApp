@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import CommentSection from './CommentSection';
 import styles from './Itinerary.module.css';
 import Carousel from 'react-multi-carousel';
@@ -32,9 +33,9 @@ interface ItineraryProps {
 }
 
 const Itinerary: React.FC<ItineraryProps> = ({ itinerary }) => {
+  const router = useRouter();
   const [likes, setLikes] = useState(itinerary.likes);
   const [isLiked, setIsLiked] = useState(false);
-  const [isCopied, setIsCopied] = useState(false);
   const [showComments, setShowComments] = useState(false);
 
   const handleLike = () => {
@@ -43,9 +44,19 @@ const Itinerary: React.FC<ItineraryProps> = ({ itinerary }) => {
   };
 
   const handleCopyTrip = () => {
-    navigator.clipboard.writeText(JSON.stringify(itinerary));
-    setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000);
+    const queryString = new URLSearchParams({
+      title: itinerary.title,
+      profileName: itinerary.profile.name,
+      profileAvatarUrl: itinerary.profile.avatarUrl,
+      flights: itinerary.flights.join(','),
+      accommodations: itinerary.accommodations,
+      restaurants: itinerary.restaurants.join(','),
+      activities: itinerary.activities.join(','),
+      // mediaUrls: itinerary.media.map((media) => media.url).join(','), c
+    }).toString();
+
+    // Navigate to /create with the query string
+    router.push(`/create?${queryString}`);
   };
 
   const toggleComments = () => {
@@ -54,7 +65,6 @@ const Itinerary: React.FC<ItineraryProps> = ({ itinerary }) => {
 
   return (
     <div className={`${styles.itineraryContainer} ${showComments ? styles.expanded : ''}`}>
-      {/* Itinerary Details Section */}
       <div className={styles.detailsSection}>
         <div className={styles.profile}>
           <img src={itinerary.profile.avatarUrl} alt={itinerary.profile.name} className={styles.avatar} />
@@ -72,7 +82,7 @@ const Itinerary: React.FC<ItineraryProps> = ({ itinerary }) => {
             {isLiked ? '❤️' : '🤍'} {likes}
           </button>
           <button onClick={handleCopyTrip} className={styles.copyButton}>
-            {isCopied ? 'Copied!' : 'Copy Trip'}
+            Copy Trip
           </button>
         </div>
         <button onClick={toggleComments} className={styles.showCommentsButton}>
@@ -80,7 +90,6 @@ const Itinerary: React.FC<ItineraryProps> = ({ itinerary }) => {
         </button>
       </div>
 
-      {/* Media Carousel Section */}
       <div className={styles.mediaContainer}>
         <Carousel responsive={{ all: { breakpoint: { max: 4000, min: 0 }, items: 1 } }}>
           {itinerary.media.map((mediaItem, index) =>
@@ -93,7 +102,6 @@ const Itinerary: React.FC<ItineraryProps> = ({ itinerary }) => {
         </Carousel>
       </div>
 
-      {/* Comments Section */}
       {showComments && (
         <div className={styles.commentSection}>
           <CommentSection comments={itinerary.comments} itineraryId={itinerary.id} />

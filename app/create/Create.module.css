@@ -1,0 +1,140 @@
+.container {
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 200px;
+  margin-right: 20px;
+  border-right: 1px solid #ccc;
+  padding-right: 20px;
+}
+
+.sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #0070f3;
+}
+
+.navItem:hover {
+  text-decoration: underline;
+}
+
+.navItemActive {
+  font-weight: bold;
+  color: #005bb5;
+}
+
+.main {
+  flex: 1;
+  position: relative;
+}
+
+.h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cardWrapper {
+  position: relative;
+  width: 100%;
+  /* Removed overflow property */
+  /* If a set height is desired, consider adding max-height and overflow-y: auto; instead */
+}
+
+.card {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  transition: opacity 0.5s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  opacity: 1;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input, .textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.textarea {
+  min-height: 80px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #0070f3;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #005bb5;
+}
+
+.summaryCard {
+  background: #f0f8ff;
+}
+
+.summaryList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.summaryList li {
+  margin: 5px 0;
+}
+
+.successMessage {
+  text-align: center;
+  color: green;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
