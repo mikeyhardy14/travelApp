@@ -27,7 +27,8 @@
 .navItem {
   margin-bottom: 10px;
   cursor: pointer;
-  color: #0070f3;
+  color: #e65100;
+  font-weight: 500;
 }
 
 .navItem:hover {
@@ -36,7 +37,7 @@
 
 .navItemActive {
   font-weight: bold;
-  color: #005bb5;
+  color: #bf360c;
 }
 
 .main {
@@ -52,8 +53,6 @@
 .cardWrapper {
   position: relative;
   width: 100%;
-  /* Removed overflow property */
-  /* If a set height is desired, consider adding max-height and overflow-y: auto; instead */
 }
 
 .card {
@@ -107,7 +106,7 @@
   font-size: 1rem;
   border: none;
   border-radius: 5px;
-  background-color: #0070f3;
+  background-color: #f57c00;
   color: white;
   cursor: pointer;
   text-align: center;
@@ -115,11 +114,11 @@
 }
 
 .button:hover {
-  background-color: #005bb5;
+  background-color: #e65100;
 }
 
 .summaryCard {
-  background: #f0f8ff;
+  background: #fff3e0;
 }
 
 .summaryList {
@@ -137,4 +136,46 @@
   color: green;
   margin-bottom: 10px;
   font-weight: bold;
+}
+
+/* Transport Options - Orange Based */
+.transportOptions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  background: #ffe0b2;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.transportOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 15px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.transportOption:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.activeTransport {
+  border: 2px solid #f57c00;
+}
+
+.transportIcon {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.transportLabel {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
 }

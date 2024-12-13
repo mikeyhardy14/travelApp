@@ -1,0 +1,120 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: sans-serif;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .inputRow {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .searchButton {
+    padding: 10px 15px;
+    background: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .searchButton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .modes {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  .mode {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #555;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  
+  .modeIcon {
+    font-size: 1.2rem;
+  }
+  
+  .mode:hover {
+    background: #f5f5f5;
+  }
+  
+  .activeMode {
+    background: #0070f3;
+    color: white;
+  }
+  
+  .results {
+    margin-bottom: 20px;
+  }
+  
+  .resultList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .resultItem {
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .resultItem div {
+    margin: 5px 0;
+  }
+  
+  .bookingLink {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #28a745;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 5px;
+  }
+  
+  .bookingLink:hover {
+    background: #218838;
+  }
+  
+  .mapContainer {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+  }
+  
+  .mapPlaceholder {
+    height: 300px;
+    background: #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
