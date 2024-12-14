@@ -1,0 +1,72 @@
+.dashboardContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  gap: 20px;
+  font-family: sans-serif;
+  background: #f9f9f9;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.mainContent {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  margin-top: 0;
+}
+
+button {
+  background: #0070f3;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  background: #005bb5;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Adjust these selectors if needed based on your UserProfile and CreatePage structure */
+.userProfileSection img.avatar {
+  margin-right: 10px;
+}
+
+.userProfileSection p {
+  margin: 5px 0;
+}
