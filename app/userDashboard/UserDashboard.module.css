@@ -1,72 +1,184 @@
-.dashboardContainer {
+/* UserDashboard.module.css */
+
+/* Main Container */
+.container {
+  padding: 2rem; /* 32px */
+  margin-top: 4rem; /* 64px to offset fixed header */
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Section Styling */
+.section {
+  margin-bottom: 3rem; /* 48px */
+}
+
+/* Section Header */
+.sectionHeader {
   display: flex;
-  flex-direction: row;
-  padding: 20px;
-  gap: 20px;
-  font-family: sans-serif;
-  background: #f9f9f9;
-  min-height: 100vh;
-  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem; /* 16px */
 }
 
-.sidebar {
-  width: 300px;
-  flex-shrink: 0;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  box-sizing: border-box;
+.sectionHeader h2 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600; /* Semi-bold */
+  color: var(--heading-color);
 }
 
-.mainContent {
-  flex: 1;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-h1, h2 {
-  margin-top: 0;
-}
-
-button {
-  background: #0070f3;
+.sectionHeader .actionButton {
+  padding: 0.5rem 1rem; /* 8px 16px */
+  background-color: var(--primary-color);
+  color: #FFFFFF;
   border: none;
-  border-radius: 4px;
-  color: white;
-  padding: 8px 12px;
+  border-radius: 0.375rem; /* 6px */
   cursor: pointer;
-  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  font-size: 1rem; /* 16px */
 }
 
-button:hover {
-  background: #005bb5;
+.sectionHeader .actionButton:hover {
+  background-color: var(--primary-dark);
 }
 
-input, textarea {
+/* Grid Container for My Trips */
+.tripsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem; /* 24px */
+}
+
+@media (min-width: 640px) {
+  /* sm breakpoint */
+  .tripsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* lg breakpoint */
+  .tripsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Scrollable Containers (Messages & Notifications) */
+.scrollableContainer {
+  border: 1px solid #E5E7EB; /* Light gray border */
+  padding: 1rem; /* 16px */
+  border-radius: 0.5rem; /* 8px */
+  overflow-y: auto;
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.messagesContainer {
+  height: 16rem; /* 256px */
+}
+
+.notificationsContainer {
+  height: 10rem; /* 160px */
+}
+
+/* Individual Message Styling */
+.message {
+  margin-bottom: 1rem; /* 16px */
+}
+
+.username {
+  font-weight: 500; /* Medium */
+  color: #1F2937; /* Dark gray */
+  margin-bottom: 0.25rem; /* 4px */
+}
+
+.content {
+  color: #4B5563; /* Gray */
+}
+
+/* Notification Styling */
+.notification {
+  margin-bottom: 0.75rem; /* 12px */
+  color: #4B5563; /* Gray */
+}
+
+/* Settings Container */
+.settingsContainer {
+  border: 1px solid #E5E7EB; /* Light gray border */
+  padding: 1rem; /* 16px */
+  border-radius: 0.5rem; /* 8px */
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Maps Section */
+.mapsSection {
+  margin-bottom: 2rem; /* 32px */
+  background-color: #FFFFFF;
+  padding: 1rem; /* 16px */
+  border-radius: 0.5rem; /* 8px */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.mapsSection h3 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 500; /* Medium */
+  margin-bottom: 0.5rem; /* 8px */
+  color: var(--heading-color);
+}
+
+/* Map Container */
+.mapContainer {
+  height: 16rem; /* 256px */
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  border-radius: 0.375rem; /* 6px */
+  overflow: hidden; /* Prevent map from overflowing */
 }
 
-.avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+/* No Content Placeholder */
+.noContent {
+  color: #4B5563; /* Gray */
+  text-align: center;
+  padding: 1rem 0; /* 16px top & bottom */
 }
 
-/* Adjust these selectors if needed based on your UserProfile and CreatePage structure */
-.userProfileSection img.avatar {
-  margin-right: 10px;
+/* Reusable Button Styles */
+.button {
+  padding: 0.5rem 1rem; /* 8px 16px */
+  border: none;
+  border-radius: 0.375rem; /* 6px */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #FFFFFF;
+  font-size: 1rem; /* 16px */
+  display: inline-block;
+  text-align: center;
 }
 
-.userProfileSection p {
-  margin: 5px 0;
+.button--primary {
+  background-color: var(--primary-color);
+}
+
+.button--primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.button--secondary {
+  background-color: var(--secondary-color);
+}
+
+.button--secondary:hover {
+  background-color: var(--secondary-dark);
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  .sectionHeader h2 {
+    font-size: 1.25rem; /* 20px */
+  }
+
+  .sectionHeader h3 {
+    font-size: 1rem; /* 16px */
+  }
 }

@@ -1,0 +1,25 @@
+TODO:
+Pages:
+    - HomePage: 
+        - make it better
+    - Chat
+    - About
+    - Services
+    - UserDashboard
+    - User Profile
+    - Explore Page:
+        Make more interactive
+Utility:
+    - One Click Pay
+    - Login
+    - Sign Up
+    - Profile
+    - 
+API:
+    - Search flights and make agenda
+
+Other:
+    -Create Business
+    - Create Social Media
+    - Create Terms and Conditions
+    - Come up with a Name

@@ -1,49 +1,55 @@
-// app/page.tsx
 import React from 'react';
-import Header from './components/Header';
 import UserSection from './components/UserSection';
 import ExploreSection from './components/ExploreSection';
+import SearchBar from './components/SearchBar';
 
 const HomePage: React.FC = () => {
   return (
     <div>
-      <div className="bg-orange-500 text-white p-8 md:p-16 flex items-center">
-        <div className="flex-1">
-          <h1 className="text-4xl font-bold mb-2">Welcome</h1>
-          <h2 className="text-4xl font-bold mb-6">Travel App</h2>
-          <p className="text-sm mb-6">Travel the World seamlessly with friends in an all-in-one travel app</p>
-
-          <div className="flex items-center text-black mb-6">
-            <input 
-              type="text" 
-              placeholder="Search destinations" 
-              className="p-3 w-full max-w-md rounded-l-lg border-0"
-            />
-            <button className="bg-orange-600 p-4 lg:p-4 rounded-r-lg">
-              <i className="fas fa-search text-white text-lg s:text-xl"></i>
-            </button>
-          </div>
-
-          <div className="flex space-x-4">
-            <button className="bg-white text-orange-500 py-2 px-4 rounded-full font-bold">
-              HOTELS
-            </button>
-            <button className="bg-gray-400 text-white py-2 px-4 rounded-full font-bold">
-              FLIGHTS
-            </button>
-          </div>
+      {/* Orange Banner Section */}
+      <div className="bg-orange-500 text-white py-40 px-8 md:px-16 flex flex-col items-center relative">
+        <div className="text-center mb-10">
+          <h1 className="text-5xl font-bold mb-4">Welcome</h1>
+          <h2 className="text-5xl font-bold mb-6">Travel App</h2>
+          <p className="text-lg mb-8">
+            Travel the World seamlessly with friends in an all-in-one travel app
+          </p>
         </div>
-        <div className="flex-1 hidden md:flex justify-end">
-          <img 
-            src="/images/surfing_globe.png" 
-            alt="Surfing Globe" 
-            className="max-w-xs md:max-w-sm lg:max-w-md h-auto" 
-          />
+
+        {/* Search Bar */}
+        <div className="w-full max-w-4xl">
+          <SearchBar />
+        </div>
+
+        {/* Overlapping Blocks */}
+        <div
+          className="absolute bottom-[-100px] left-1/2 transform -translate-x-1/2 flex justify-between gap-6 z-10"
+          style={{ width: '80%' }}
+        >
+          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-8 text-center font-bold text-sm h-56">
+            Block 1 Content
+          </div>
+          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-8 text-center font-bold text-sm h-56">
+            Block 2 Content
+          </div>
+          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-8 text-center font-bold text-sm h-56">
+            Block 3 Content
+          </div>
+          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-8 text-center font-bold text-sm h-56">
+            Block 4 Content
+          </div>
         </div>
       </div>
 
-      <UserSection />
-      <ExploreSection />
+      {/* User Section */}
+      <div className="mt-56">
+        <UserSection />
+      </div>
+
+      {/* Explore Section */}
+      <div>
+        <ExploreSection />
+      </div>
     </div>
   );
 };

@@ -1,0 +1,80 @@
+/* SearchBar.module.css */
+
+.searchBarContainer {
+    display: flex;
+    align-items: center;
+    background: #f3f3f3; /* Complementary light grey */
+    border-radius: 25px; /* Rounded edges */
+    padding: 8px 20px; /* Padding for spacing */
+    gap: 10px;
+    width: 1000px; /* Fixed width for the search bar */
+    margin: 20px auto; /* Add margin for spacing below other elements */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .inputGroup {
+    flex: 1;
+    position: relative;
+  }
+  
+  .wideInputGroup {
+    flex: 2; /* Wider for starting location and destination */
+  }
+  
+  .input {
+    width: 100%;
+    padding: 6px 10px; /* Reduced padding for thinner height */
+    border: none;
+    font-size: 14px; /* Slightly smaller font size */
+    background: transparent; /* No background for the inputs */
+    color: #333; /* Dark text color */
+    outline: none;
+  }
+  
+  .input::placeholder {
+    color: #888; /* Placeholder color */
+  }
+  
+  .datePickerInput {
+    width: 100%;
+    padding: 6px 10px; /* Match padding with text inputs */
+    border: none;
+    font-size: 14px; /* Match font size with text inputs */
+    background: transparent;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .datePickerInput::placeholder {
+    color: #888;
+  }
+  
+  .separator {
+    width: 1px;
+    height: 30px; /* Adjusted height for thinner separator */
+    background-color: #ccc; /* Separator line color */
+  }
+  
+  .searchButton {
+    background-color: #ffffff; /* White button */
+    color: #333; /* Dark text */
+    border: none;
+    border-radius: 50px; /* Oval shape */
+    padding: 6px 20px; /* Reduced padding for thinner button */
+    font-size: 14px; /* Slightly smaller font */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  .searchButton:hover {
+    background-color: #f0f0f0; /* Slightly darker on hover */
+  }
+  
+  /* Adjust the react-datepicker calendar placement */
+  .react-datepicker-popper {
+    z-index: 1000;
+  }
+  
