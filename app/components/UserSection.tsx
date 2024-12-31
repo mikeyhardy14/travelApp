@@ -22,7 +22,7 @@ const UserSection: React.FC = () => {
           </div>
         ))}
       </div>
-      <h2 className="text-center text-2xl font-bold">Welcome to Travel App</h2>
+      {/* <h2 className="text-center text-2xl font-bold">Welcome to Travel App</h2> */}
     </div>
   );
 };

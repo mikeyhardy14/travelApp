@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
   return (
     <div>
       {/* Orange Banner Section */}
-      <div className="bg-orange-500 text-white py-40 px-8 md:px-16 flex flex-col items-center relative">
+      <div className="bg-orange-500 text-white py-40 px-8 md:px-16 flex flex-col items-center relative rounded-b-3xl">
         <div className="text-center mb-10">
           <h1 className="text-5xl font-bold mb-4">Welcome</h1>
           <h2 className="text-5xl font-bold mb-6">Travel App</h2>
@@ -23,26 +23,30 @@ const HomePage: React.FC = () => {
 
         {/* Overlapping Blocks */}
         <div
-          className="absolute bottom-[-100px] left-1/2 transform -translate-x-1/2 flex justify-between gap-6 z-10"
+          className="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-between gap-6 z-10"
           style={{ width: '80%' }}
         >
-          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-8 text-center font-bold text-sm h-56">
-            Block 1 Content
+          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-6 text-center font-bold text-sm h-36">
+            <div className="text-3xl font-bold text-black">Chat</div>
+            <div className="text-sm text-gray-500 mt-2">Talk to Friends</div>
           </div>
-          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-8 text-center font-bold text-sm h-56">
-            Block 2 Content
+          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-6 text-center font-bold text-sm h-36">
+            <div className="text-3xl font-bold text-black">Book</div>
+            <div className="text-sm text-gray-500 mt-2">Get the Best Prices</div>
           </div>
-          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-8 text-center font-bold text-sm h-56">
-            Block 3 Content
+          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-6 text-center font-bold text-sm h-36">
+            <div className="text-3xl font-bold text-black">Coordinate</div>
+            <div className="text-sm text-gray-500 mt-2">Plan Trips Together</div>
           </div>
-          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-8 text-center font-bold text-sm h-56">
-            Block 4 Content
+          <div className="flex-1 bg-white text-gray-800 rounded-2xl shadow-lg p-6 text-center font-bold text-sm h-36">
+            <div className="text-3xl font-bold text-black">5.0</div>
+            <div className="text-sm text-gray-500 mt-2">Average Rating</div>
           </div>
         </div>
       </div>
 
       {/* User Section */}
-      <div className="mt-56">
+      <div className="mt-48">
         <UserSection />
       </div>
 
