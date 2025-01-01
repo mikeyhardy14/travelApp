@@ -1,5 +1,12 @@
-// app/components/ExploreSection.tsx
-import React from 'react';
+"use client"; // If you're using Next.js 13+ (app dir), ensure this is a client component.
+
+import React, { useState, useEffect, useRef } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+// Example icons (gray) from react-icons
+import { FaMapMarkerAlt, FaTicketAlt, FaMoneyCheckAlt, FaSuitcaseRolling } from 'react-icons/fa';
 
 const ExploreSection: React.FC = () => {
   // Fake data for now
@@ -55,36 +62,110 @@ const ExploreSection: React.FC = () => {
   ];
 
   // Randomly select a location
-  const selectedLocation = fakeData[Math.floor(Math.random() * fakeData.length)];
+  const [selectedLocation, setSelectedLocation] = useState(fakeData[0]);
+
+  // Only pick a random location once when component mounts
+  useEffect(() => {
+    const randomLocation = fakeData[Math.floor(Math.random() * fakeData.length)];
+    setSelectedLocation(randomLocation);
+  }, []);
+
+  // Steps data
+  const steps = [
+    {
+      title: "Find your destination",
+      description: "Embark on a journey to discover your dream destination, where adventure and relaxation await.",
+      image: "/images/how-it-works-1.jpg",
+      icon: <FaMapMarkerAlt className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Book a ticket",
+      description: "Ensure a smooth travel experience by booking tickets to your preferred destination via our platform.",
+      image: "/images/how-it-works-2.jpg",
+      icon: <FaTicketAlt className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Make payment",
+      description: "We offer a variety of payment options to meet your preferences and ensure a hassle-free transaction.",
+      image: "/images/how-it-works-3.jpg",
+      icon: <FaMoneyCheckAlt className="text-2xl text-gray-600" />,
+    },
+    {
+      title: "Explore destination",
+      description: "Immerse yourself in a tapestry of sights, sounds, and tastes as you wind through historic streets.",
+      image: "/images/how-it-works-4.jpg",
+      icon: <FaSuitcaseRolling className="text-2xl text-gray-600" />,
+    }
+  ];
+
+  // Reference to the carousel
+  const sliderRef = useRef<Slider | null>(null);
+
+  // Hovered step index (if user hovers a bullet)
+  const [hoveredStepIndex, setHoveredStepIndex] = useState<number | null>(null);
+
+  // Active slide index from the carousel
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+  // Slower rotation: 5s per slide, 800ms transition
+  const sliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 800,        // Slower transition speed
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    // Called after each slide changes => we update activeSlideIndex
+    afterChange: (current: number) => {
+      setActiveSlideIndex(current);
+    },
+  };
+
+  if (!selectedLocation) return null; // Safety check
+
+  // Handle bullet hover => highlight and jump carousel
+  const handleHover = (index: number | null) => {
+    setHoveredStepIndex(index);
+    if (index !== null) {
+      sliderRef.current?.slickGoTo(index);
+    }
+  };
+
+  // Decide which bullet is highlighted:
+  // If hoveredStepIndex is NOT null, use that. Otherwise use activeSlideIndex.
+  const highlightIndex = hoveredStepIndex !== null ? hoveredStepIndex : activeSlideIndex;
 
   return (
     <div className="bg-white p-8 w-full max-w-[1000px] mx-auto">
+      {/* --- Best Location Header --- */}
       <div className="mb-8">
         <p className="text-gray-500 text-sm">Best location</p>
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-black font-bold text-3xl mr-6">{selectedLocation.name}, {selectedLocation.location}</h3>
-          <p className="text-gray-500 text-sm max-w-[400px] text-right">{selectedLocation.description}</p>
+          <h3 className="text-black font-bold text-3xl mr-6">
+            {selectedLocation.name}, {selectedLocation.location}
+          </h3>
+          <p className="text-gray-500 text-sm max-w-[400px] text-right">
+            {selectedLocation.description}
+          </p>
         </div>
       </div>
+
+      {/* --- Top Row of Images --- */}
       <div className="grid grid-cols-5 gap-6">
         {selectedLocation.images.slice(0, 2).map((image, index) => (
           <div
             key={index}
-            className={`${index === 0 ? 'col-span-3' : 'col-span-2'} h-80 bg-gray-200 rounded-xl relative overflow-hidden shadow-md`}
-            style={{ backgroundImage: `url(${image.url})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-          >
-            <div className="absolute bottom-0 left-0 text-white text-sm font-bold p-4">
-              <p>{image.event}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="grid grid-cols-5 gap-6 mt-6">
-        {selectedLocation.images.slice(2).map((image, index) => (
-          <div
-            key={index}
-            className={`${index === 0 ? 'col-span-2' : 'col-span-3'} h-80 bg-gray-200 rounded-xl relative overflow-hidden shadow-md`}
-            style={{ backgroundImage: `url(${image.url})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+            className={`
+              ${index === 0 ? 'col-span-3' : 'col-span-2'}
+              h-80 bg-gray-200 rounded-xl relative overflow-hidden shadow-lg
+            `}
+            style={{
+              backgroundImage: `url(${image.url})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
           >
             <div className="absolute bottom-0 left-0 text-white text-sm font-bold p-4">
               <p>{image.event}</p>
@@ -93,52 +174,84 @@ const ExploreSection: React.FC = () => {
         ))}
       </div>
 
-      <div className="mt-16 grid grid-cols-2 gap-8 items-center">
-        <div className="bg-gray-200 rounded-xl overflow-hidden shadow-md">
-          <img
-            src="/images/sample-how-it-works.jpg"
-            alt="How it works"
-            className="w-full h-full object-cover"
-          />
-          <div className="p-6">
-            <p className="text-sm text-gray-600 mb-4">
-              Embark on a journey to find your dream destination, where adventure and relaxation await, creating unforgettable memories along the way.
-            </p>
-            <div className="flex items-center space-x-4">
-              <button className="bg-black text-white text-sm py-2 px-4 rounded">Search</button>
+      {/* --- Bottom Row of Images --- */}
+      <div className="grid grid-cols-5 gap-6 mt-6 mb-32">
+        {selectedLocation.images.slice(2).map((image, index) => (
+          <div
+            key={index}
+            className={`
+              ${index === 0 ? 'col-span-2' : 'col-span-3'}
+              h-80 bg-gray-200 rounded-xl relative overflow-hidden shadow-xl
+            `}
+            style={{
+              backgroundImage: `url(${image.url})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+          >
+            <div className="absolute bottom-0 left-0 text-white text-sm font-bold p-4">
+              <p>{image.event}</p>
             </div>
           </div>
+        ))}
+      </div>
+
+      {/* --- How It Works Section --- */}
+      <div className="mt-16 grid grid-cols-2 gap-8 items-start mb-32">
+        {/* LEFT: Carousel (auto-rotates more slowly) */}
+        <div className="rounded-xl overflow-hidden shadow-md">
+          <Slider ref={sliderRef} {...sliderSettings}>
+            {steps.map((step, index) => (
+              <div key={index}>
+                <img
+                  src={step.image}
+                  alt={`Step ${index + 1}`}
+                  className="w-full h-80 object-cover"
+                />
+              </div>
+            ))}
+          </Slider>
         </div>
+
+        {/* RIGHT: Steps bullet list */}
         <div>
           <h4 className="text-gray-500 text-sm mb-2">How it works</h4>
           <h2 className="text-black font-bold text-3xl mb-6">One click for you</h2>
           <ul className="space-y-4">
-            <li>
-              <h3 className="text-black font-bold text-lg">Find your destination</h3>
-              <p className="text-gray-500 text-sm">
-                Embark on a journey to discover your dream destination, where adventure and relaxation await.
-              </p>
-            </li>
-            <li>
-              <h3 className="text-black font-bold text-lg">Book a ticket</h3>
-              <p className="text-gray-500 text-sm">
-                Ensure a smooth travel experience by booking tickets to your preferred destination via our platform.
-              </p>
-            </li>
-            <li>
-              <h3 className="text-black font-bold text-lg">Make payment</h3>
-              <p className="text-gray-500 text-sm">
-                We offer a variety of payment options to meet your preferences and ensure a hassle-free transaction.
-              </p>
-            </li>
-            <li>
-              <h3 className="text-black font-bold text-lg">Explore destination</h3>
-              <p className="text-gray-500 text-sm">
-                You’ll be immersed in a captivating tapestry of sights, sounds, and tastes as you wind your way through the ancient streets.
-              </p>
-            </li>
+            {steps.map((step, index) => {
+              const isActive = highlightIndex === index;
+              return (
+                <li
+                  key={index}
+                  onMouseEnter={() => handleHover(index)}
+                  onMouseLeave={() => handleHover(null)}
+                  className={`
+                    cursor-pointer rounded-md p-3
+                    transition-shadow duration-300
+                    ${isActive ? 'shadow-md bg-gray-100' : 'bg-white'}
+                  `}
+                >
+                  <div className="flex items-start space-x-3">
+                    {/* Step icon */}
+                    <div className="text-2xl text-gray-600">
+                      {step.icon}
+                    </div>
+                    {/* Title & Description */}
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-800">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm mt-1">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
+
       </div>
     </div>
   );
